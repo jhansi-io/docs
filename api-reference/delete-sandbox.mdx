@@ -1,0 +1,31 @@
+---
+title: Delete Sandbox
+description: Tear down a sandbox and remove its workspace.
+---
+
+## Endpoint
+
+```http
+DELETE /v1/sandboxes/{id}
+```
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `id` | string | Yes | Sandbox ID returned from create. |
+
+## Response
+
+Returns `204 No Content` on success.
+
+## Example
+
+```bash
+curl -X DELETE http://localhost:8000/v1/sandboxes/sb_abc123
+```
+
+<Warning>
+Deleting a sandbox is permanent. The workspace folder and all 
+uploaded files will be removed.
+</Warning>

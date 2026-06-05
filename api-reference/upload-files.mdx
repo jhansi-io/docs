@@ -1,0 +1,40 @@
+---
+title: Upload Files
+description: Upload a file into the sandbox workspace.
+---
+
+## Endpoint
+
+```http
+POST /v1/sandboxes/{id}/files
+```
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `id` | string | Yes | Sandbox ID returned from create. |
+
+## Request
+
+Multipart form upload. One file per request.
+
+## Response
+
+```json
+{
+  "filename": "main.py"
+}
+```
+
+## Example
+
+```bash
+curl -X POST http://localhost:8000/v1/sandboxes/sb_abc123/files \
+  -F "file=@main.py"
+```
+
+<Note>
+Upload only when files change. The workspace persists between runs — 
+there is no need to re-upload unchanged files.
+</Note>

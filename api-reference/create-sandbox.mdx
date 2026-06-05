@@ -1,0 +1,48 @@
+---
+title: Create Sandbox
+description: Create a new isolated sandbox with a persistent workspace.
+---
+
+## Endpoint
+
+```http
+POST /v1/sandboxes
+```
+
+## Request
+
+```json
+{
+  "language": "python"
+}
+```
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `language` | string | No | Runtime language. Defaults to `python`. |
+
+## Supported Languages
+
+| Language | Parameter |
+|----------|-----------|
+| Python   | `python`  |
+| Node.js  | `node`    |
+| Go       | `go`      |
+
+## Response
+
+```json
+{
+  "id": "sb_abc123",
+  "language": "python",
+  "status": "created"
+}
+```
+
+## Example
+
+```bash
+curl -X POST http://localhost:8000/v1/sandboxes \
+  -H "Content-Type: application/json" \
+  -d '{"language": "python"}'
+```

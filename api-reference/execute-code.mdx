@@ -1,0 +1,49 @@
+---
+title: Execute Code
+description: Run a file inside the sandbox workspace.
+---
+
+## Endpoint
+
+```http
+POST /v1/sandboxes/{id}/exec
+```
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `id` | string | Yes | Sandbox ID returned from create. |
+
+## Request
+
+```json
+{
+  "filename": "main.py"
+}
+```
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `filename` | string | Yes | File to execute inside the workspace. |
+
+## Response
+
+```json
+{
+  "output": "hello from jhansi.io\n"
+}
+```
+
+## Example
+
+```bash
+curl -X POST http://localhost:8000/v1/sandboxes/sb_abc123/exec \
+  -H "Content-Type: application/json" \
+  -d '{"filename": "main.py"}'
+```
+
+<Note>
+Each exec spins up a fresh container. The workspace survives — 
+the container does not.
+</Note>

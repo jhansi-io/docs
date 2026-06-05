@@ -1,0 +1,38 @@
+---
+title: Get Status
+description: Retrieve the current status of a sandbox.
+---
+
+## Endpoint
+
+```http
+GET /v1/sandboxes/{id}
+```
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `id` | string | Yes | Sandbox ID returned from create. |
+
+## Response
+
+```json
+{
+  "id": "sb_abc123",
+  "language": "python",
+  "status": "created"
+}
+```
+
+## Status Values
+
+| Status | Description |
+|--------|-------------|
+| `created` | Sandbox is ready to accept files and exec requests. |
+
+## Example
+
+```bash
+curl http://localhost:8000/v1/sandboxes/sb_abc123
+```
