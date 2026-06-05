@@ -1,0 +1,76 @@
+---
+title: Quick Start
+description: Run your first sandbox in under 5 minutes.
+---
+
+## Requirements
+
+- Docker running locally
+- `curl` or any HTTP client
+
+## 1. Start Petri
+
+```bash
+git clone https://github.com/jhansi-io/petri.git
+cd petri
+poetry install
+make run
+```
+
+Petri is now running at `http://localhost:8000`.
+
+## 2. Create a sandbox
+
+```bash
+curl -X POST http://localhost:8000/v1/sandboxes \
+  -H "Content-Type: application/json" \
+  -d '{"language": "python"}'
+```
+
+```json
+{
+  "id": "sb_abc123",
+  "language": "python",
+  "status": "created"
+}
+```
+
+## 3. Upload a file
+
+Create a simple Python file:
+
+```bash
+echo "print('hello from jhansi.io')" > main.py
+```
+
+Upload it to your sandbox:
+
+```bash
+curl -X POST http://localhost:8000/v1/sandboxes/sb_abc123/files \
+  -F "file=@main.py"
+```
+
+## 4. Execute it
+
+```bash
+curl -X POST http://localhost:8000/v1/sandboxes/sb_abc123/exec \
+  -H "Content-Type: application/json" \
+  -d '{"filename": "main.py"}'
+```
+
+```json
+{
+  "output": "hello from jhansi.io\n"
+}
+```
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="API Reference" icon="code" href="/api-reference/create-sandbox">
+    Explore the full API.
+  </Card>
+  <Card title="Self Hosting" icon="server" href="/self-hosting/requirements">
+    Deploy Petri in production.
+  </Card>
+</CardGroup>
