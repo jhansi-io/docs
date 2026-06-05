@@ -1,0 +1,40 @@
+---
+title: Configuration
+description: Configure Petri for production deployment.
+---
+
+## Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `PETRI_WORKSPACE_ROOT` | `~/.petri/workspaces` | Root folder for all sandbox workspaces. |
+
+## Setting the Workspace Root
+
+By default Petri stores workspaces at `~/.petri/workspaces`. 
+Override this in production:
+
+```bash
+export PETRI_WORKSPACE_ROOT=/data/petri/workspaces
+```
+
+<Warning>
+When running Petri as a Docker container, `PETRI_WORKSPACE_ROOT` 
+must be a host-mounted volume. Files stored inside the container 
+will be lost on restart.
+</Warning>
+
+## Running as a Docker Container
+
+```bash
+docker run \
+  -p 8000:8000 \
+  -v /data/petri/workspaces:/data/petri/workspaces \
+  -e PETRI_WORKSPACE_ROOT=/data/petri/workspaces \
+  jhansiio/petri
+```
+
+## Running with Docker Compose
+
+Coming in a future release. Follow progress at 
+[jhansiio.featurebase.app](https://jhansiio.featurebase.app).
