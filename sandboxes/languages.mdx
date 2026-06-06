@@ -1,0 +1,23 @@
+---
+title: Supported Languages
+description: Languages supported by jhansi.io sandboxes
+---
+
+jhansi.io supports Python, Node, Go, and Java out of the box.
+
+| Language | Runtime | Dependency Manager |
+|----------|---------|-------------------|
+| Python | 3.12 | pip / pipreqs |
+| Node | 20 | npm |
+| Go | 1.22 | go mod |
+| Java | 21 | Maven / Gradle / javac |
+
+Specify the language when creating a sandbox:
+
+```bash
+curl -X POST https://api.jhansi.io/v1/sandboxes \
+  -H "Content-Type: application/json" \
+  -d '{"language": "python"}'
+```
+
+The sandbox runtime matches the language — no configuration needed.

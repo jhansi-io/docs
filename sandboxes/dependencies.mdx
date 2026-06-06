@@ -1,0 +1,40 @@
+---
+title: Dependency Detection
+description: How jhansi.io automatically installs dependencies at exec time
+---
+
+jhansi.io detects and installs dependencies automatically at exec time —
+no manual `pip install` or `npm install` needed.
+
+Dependencies are installed into the sandbox workspace and persist across runs.
+First exec is slower. Subsequent execs are fast.
+
+## Python
+
+| File found | Action |
+|------------|--------|
+| `pyproject.toml` | `pip install` from project |
+| `requirements.txt` | `pip install -r` |
+| Neither | `pipreqs` scans your file and installs what it finds |
+
+## Node
+
+| File found | Action |
+|------------|--------|
+| `package.json` | `npm install` |
+| Neither | runs as-is |
+
+## Go
+
+| File found | Action |
+|------------|--------|
+| `go.mod` | `go mod download` |
+| Neither | `go mod init` + `go mod tidy` |
+
+## Java
+
+| File found | Action |
+|------------|--------|
+| `pom.xml` | Maven — `mvn dependency:resolve` + `mvn compile` |
+| `build.gradle` | Gradle — `gradle dependencies` + `gradle compileJava` |
+| Neither | `javac` direct compile |

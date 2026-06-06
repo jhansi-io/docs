@@ -43,6 +43,16 @@
         ]
       },
       {
+        "group": "Sandboxes",
+        "icon": "box",
+        "expanded": true,
+        "pages": [
+          "sandboxes/languages",
+          "sandboxes/dependencies",
+          "sandboxes/conventions"
+        ]
+      },
+      {
         "group": "API Reference",
         "icon": "code",
         "expanded": true,

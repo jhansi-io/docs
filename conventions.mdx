@@ -1,0 +1,25 @@
+---
+title: Sandbox Conventions
+description: Best practices for working with jhansi.io sandboxes
+---
+
+## One sandbox, one project
+
+A sandbox maps to a single project. Mixing multiple projects in one
+sandbox can cause dependency conflicts.
+
+Create a new sandbox for each project:
+
+```bash
+# project 1
+curl -X POST https://api.jhansi.io/v1/sandboxes \
+  -H "Content-Type: application/json" \
+  -d '{"language": "python"}'
+
+# project 2
+curl -X POST https://api.jhansi.io/v1/sandboxes \
+  -H "Content-Type: application/json" \
+  -d '{"language": "python"}'
+```
+
+Each sandbox gets its own isolated workspace and dependency cache.
