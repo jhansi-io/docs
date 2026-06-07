@@ -59,6 +59,7 @@
         "pages": [
           "api-reference/create-sandbox",
           "api-reference/upload-files",
+          "api-reference/upload-project",
           "api-reference/execute-code",
           "api-reference/get-status",
           "api-reference/delete-sandbox"

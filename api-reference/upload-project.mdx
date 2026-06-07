@@ -1,0 +1,51 @@
+---
+title: Upload Project
+description: Upload a full project as a zip file into the sandbox workspace.
+---
+
+## Endpoint
+
+```http
+POST /v1/sandboxes/{id}/upload
+```
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `id` | string | Yes | Sandbox ID returned from create. |
+
+## Request
+
+Multipart form upload. Must be a `.zip` file.
+
+## Response
+
+```json
+{
+  "status": "uploaded"
+}
+```
+
+## Example
+
+```bash
+curl -X POST http://localhost:8000/v1/sandboxes/sb_abc123/upload \
+  -F "file=@project.zip"
+```
+
+## How to zip your project
+
+Zip from inside your project folder so folder structure is preserved:
+
+```bash
+cd my_project && zip -r ../my_project.zip .
+```
+
+<Warning>
+Do not zip the folder itself — zip the contents. If you run `zip -r project.zip my_project/`, files will extract into a subfolder and paths will not resolve correctly.
+</Warning>
+
+<Note>
+For test mode to work correctly, your test files must be in the right directory — e.g. `tests/test_app.py` for Python. Uploading as a zip preserves this structure automatically.
+</Note>

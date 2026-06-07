@@ -1,25 +1,20 @@
 ---
 title: Upload Files
-description: Upload a file into the sandbox workspace.
+description: Upload a single file or a full project into the sandbox workspace.
 ---
 
-## Endpoint
+## Upload a single file
 
 ```http
 POST /v1/sandboxes/{id}/files
 ```
 
-## Parameters
-
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `id` | string | Yes | Sandbox ID returned from create. |
-
-## Request
-
 Multipart form upload. One file per request.
 
-## Response
+```bash
+curl -X POST http://localhost:8000/v1/sandboxes/sb_abc123/files \
+  -F "file=@main.py"
+```
 
 ```json
 {
@@ -27,14 +22,45 @@ Multipart form upload. One file per request.
 }
 ```
 
-## Example
+## Upload a project (zip)
+
+```http
+POST /v1/sandboxes/{id}/upload
+```
+
+Upload a zip file containing your full project. Folder structure is preserved.
 
 ```bash
-curl -X POST http://localhost:8000/v1/sandboxes/sb_abc123/files \
-  -F "file=@main.py"
+curl -X POST http://localhost:8000/v1/sandboxes/sb_abc123/upload \
+  -F "file=@project.zip"
+```
+
+```json
+{
+  "status": "uploaded"
+}
+```
+
+```json
+{
+  "status": "uploaded"
+}
+```
+
+### How to zip your project
+
+Zip from inside your project folder so the structure is preserved:
+
+```bash
+cd my_project && zip -r ../my_project.zip .
 ```
 
 <Note>
-Upload only when files change. The workspace persists between runs — 
-there is no need to re-upload unchanged files.
+Do not zip the folder itself — zip the contents. Otherwise Petri extracts into a subfolder and paths will not resolve correctly.
 </Note>
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `id` | string | Yes | Sandbox ID returned from create. |

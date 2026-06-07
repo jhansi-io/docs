@@ -1,6 +1,6 @@
 ---
 title: Execute Code
-description: Run a file inside the sandbox workspace.
+description: Run a command inside the sandbox workspace.
 ---
 
 ## Endpoint
@@ -19,13 +19,15 @@ POST /v1/sandboxes/{id}/exec
 
 ```json
 {
-  "filename": "main.py"
+  "command": "python app.py",
+  "test": false
 }
 ```
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `filename` | string | Yes | File to execute inside the workspace. |
+| `command` | string | Yes | The command to run inside the workspace. Mirrors what you would type in your terminal. |
+| `test` | boolean | No | When `true`, Petri runs the command, waits 2 seconds, then runs the language-appropriate test suite. Defaults to `false`. |
 
 ## Response
 
@@ -35,15 +37,36 @@ POST /v1/sandboxes/{id}/exec
 }
 ```
 
-## Example
+## Examples
+
+### Run a script
 
 ```bash
 curl -X POST http://localhost:8000/v1/sandboxes/sb_abc123/exec \
   -H "Content-Type: application/json" \
-  -d '{"filename": "main.py"}'
+  -d '{"command": "python app.py"}'
 ```
 
+### Run a server and test it
+
+```bash
+curl -X POST http://localhost:8000/v1/sandboxes/sb_abc123/exec \
+  -H "Content-Type: application/json" \
+  -d '{"command": "uvicorn app:app", "test": true}'
+```
+
+## Test runners
+
+When `test: true`, Petri runs the appropriate test suite automatically:
+
+| Language | Runner | Discovery |
+|----------|--------|-----------|
+| Python | pytest | `tests/` directory |
+| Node | jest | `*.test.js` files |
+| Go | go test | `./...` |
+| Java | mvn test | Maven/Gradle standard |
+
 <Note>
-Each exec spins up a fresh container. The workspace survives — 
-the container does not.
+`filename` has been replaced by `command` in v0.4.0 — a breaking change.
+Pass the full command you would run in your terminal, e.g. `python app.py` or `uvicorn app:app`.
 </Note>

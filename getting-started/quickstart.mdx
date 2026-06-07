@@ -35,19 +35,19 @@ curl -X POST http://localhost:8000/v1/sandboxes \
 }
 ```
 
-## 3. Upload a file
+## 3. Upload your project
 
-Create a simple Python file:
+Zip your project from inside the folder:
 
 ```bash
-echo "print('hello from jhansi.io')" > main.py
+cd my_project && zip -r ../my_project.zip .
 ```
 
-Upload it to your sandbox:
+Upload it:
 
 ```bash
-curl -X POST http://localhost:8000/v1/sandboxes/sb_abc123/files \
-  -F "file=@main.py"
+curl -X POST http://localhost:8000/v1/sandboxes/sb_abc123/upload \
+  -F "file=@my_project.zip"
 ```
 
 ## 4. Execute it
@@ -55,12 +55,26 @@ curl -X POST http://localhost:8000/v1/sandboxes/sb_abc123/files \
 ```bash
 curl -X POST http://localhost:8000/v1/sandboxes/sb_abc123/exec \
   -H "Content-Type: application/json" \
-  -d '{"filename": "main.py"}'
+  -d '{"command": "python app.py"}'
 ```
 
 ```json
 {
   "output": "hello from jhansi.io\n"
+}
+```
+
+## 5. Run with test mode
+
+```bash
+curl -X POST http://localhost:8000/v1/sandboxes/sb_abc123/exec \
+  -H "Content-Type: application/json" \
+  -d '{"command": "python app.py", "test": true}'
+```
+
+```json
+{
+  "output": "tests/test_app.py::test_health PASSED\n1 passed in 0.11s\n"
 }
 ```
 
