@@ -1,6 +1,6 @@
 ---
 title: Configuration
-description: Configure Petri for production deployment.
+description: Configure Petri for self-hosting.
 ---
 
 ## Environment Variables
@@ -9,32 +9,24 @@ description: Configure Petri for production deployment.
 |----------|---------|-------------|
 | `PETRI_WORKSPACE_ROOT` | `~/.petri/workspaces` | Root folder for all sandbox workspaces. |
 
-## Setting the Workspace Root
+## Docker Compose (recommended)
 
-By default Petri stores workspaces at `~/.petri/workspaces`. 
-Override this in production:
+The `docker-compose.yml` sets `PETRI_WORKSPACE_ROOT=/tmp/petri-workspaces` and mounts it automatically. No additional configuration needed.
 
 ```bash
-export PETRI_WORKSPACE_ROOT=/data/petri/workspaces
+git clone https://github.com/jhansi-io/petri.git
+cd petri
+docker compose up
 ```
 
 <Warning>
-When running Petri as a Docker container, `PETRI_WORKSPACE_ROOT` 
-must be a host-mounted volume. Files stored inside the container 
-will be lost on restart.
+`/tmp/petri-workspaces` is ephemeral — workspaces are cleared when the host restarts. For persistent workspaces, override `PETRI_WORKSPACE_ROOT` with a permanent path and update the volume mount in `docker-compose.yml`.
 </Warning>
 
-## Running as a Docker Container
+## Local Development
 
 ```bash
-docker run \
-  -p 8000:8000 \
-  -v /data/petri/workspaces:/data/petri/workspaces \
-  -e PETRI_WORKSPACE_ROOT=/data/petri/workspaces \
-  jhansiio/petri
+make run
 ```
 
-## Running with Docker Compose
-
-Coming in a future release. Follow progress at 
-[jhansiio.featurebase.app](https://jhansiio.featurebase.app).
+Workspaces are stored at `~/.petri/workspaces` by default.
