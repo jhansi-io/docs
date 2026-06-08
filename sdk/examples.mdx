@@ -1,0 +1,37 @@
+---
+title: Examples
+description: Common patterns using the jhansi SDK.
+---
+
+## Run a Python script
+
+```python
+from jhansi import Sandbox
+
+with Sandbox(language="python") as sb:
+    sb.upload_file("main.py")
+    result = sb.exec("python main.py")
+    print(result["output"])
+```
+
+## Run a Node project
+
+```python
+from jhansi import Sandbox
+
+with Sandbox(language="node") as sb:
+    sb.upload_zip("my_project.zip")
+    result = sb.exec("node index.js")
+    print(result["output"])
+```
+
+## Run tests
+
+```python
+from jhansi import Sandbox
+
+with Sandbox(language="python") as sb:
+    sb.upload_zip("my_project.zip")
+    result = sb.exec("python app.py", test=True)
+    print(result["output"])
+```

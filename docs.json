@@ -33,48 +33,59 @@
       ]
     },
     "groups": [
-      {
-        "group": "Getting Started",
-        "icon": "rocket",
-        "expanded": true,
-        "pages": [
-          "getting-started/introduction",
-          "getting-started/quickstart"
-        ]
-      },
-      {
-        "group": "Sandboxes",
-        "icon": "box",
-        "expanded": true,
-        "pages": [
-          "sandboxes/languages",
-          "sandboxes/dependencies",
-          "sandboxes/conventions"
-        ]
-      },
-      {
-        "group": "API Reference",
-        "icon": "code",
-        "expanded": true,
-        "pages": [
-          "api-reference/create-sandbox",
-          "api-reference/upload-files",
-          "api-reference/upload-project",
-          "api-reference/execute-code",
-          "api-reference/get-status",
-          "api-reference/delete-sandbox"
-        ]
-      },
-      {
-        "group": "Self Hosting",
-        "icon": "server",
-        "expanded": true,
-        "pages": [
-          "self-hosting/requirements",
-          "self-hosting/configuration"
-        ]
-      }
+  {
+    "group": "Getting Started",
+    "icon": "rocket",
+    "expanded": true,
+    "pages": [
+      "getting-started/introduction",
+      "getting-started/quickstart"
     ]
+  },
+  {
+    "group": "SDK",
+    "icon": "puzzle",
+    "expanded": true,
+    "pages": [
+      "sdk/installation",
+      "sdk/sandbox",
+      "sdk/context-manager",
+      "sdk/examples"
+    ]
+  },
+  {
+    "group": "Sandboxes",
+    "icon": "box",
+    "expanded": true,
+    "pages": [
+      "sandboxes/languages",
+      "sandboxes/dependencies",
+      "sandboxes/conventions"
+    ]
+  },
+  {
+    "group": "For Developers",
+    "icon": "code",
+    "expanded": true,
+    "pages": [
+      "api-reference/create-sandbox",
+      "api-reference/upload-files",
+      "api-reference/upload-project",
+      "api-reference/execute-code",
+      "api-reference/get-status",
+      "api-reference/delete-sandbox"
+    ]
+  },
+  {
+    "group": "Self Hosting",
+    "icon": "server",
+    "expanded": true,
+    "pages": [
+      "self-hosting/requirements",
+      "self-hosting/configuration"
+    ]
+  }
+]
   },
   "navbar": {
     "links": [],

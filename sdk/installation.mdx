@@ -1,0 +1,31 @@
+---
+title: Installation
+description: Install the jhansi SDK and connect to a sandbox.
+---
+
+## Requirements
+
+- Python 3.12+
+- Petri running locally or in the cloud
+
+## Install
+
+```bash
+pip install jhansi
+```
+
+## Configure
+
+By default the SDK connects to `http://localhost:8000`. Override with an environment variable:
+
+```bash
+export JHANSI_BASE_URL=http://localhost:8000
+```
+
+Or pass it directly:
+
+```python
+from jhansi import Sandbox
+
+sb = Sandbox(language="python", base_url="http://localhost:8000")
+```

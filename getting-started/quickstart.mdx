@@ -6,83 +6,40 @@ description: Run your first sandbox in under 5 minutes.
 ## Requirements
 
 - Docker running locally
-- `curl` or any HTTP client
+- Python 3.12+
 
 ## 1. Start Petri
 
 ```bash
 git clone https://github.com/jhansi-io/petri.git
 cd petri
-poetry install
-make run
+docker compose up
 ```
 
 Petri is now running at `http://localhost:8000`.
 
-## 2. Create a sandbox
+## 2. Install the SDK
 
 ```bash
-curl -X POST http://localhost:8000/v1/sandboxes \
-  -H "Content-Type: application/json" \
-  -d '{"language": "python"}'
+pip install jhansi
 ```
 
-```json
-{
-  "id": "sb_abc123",
-  "language": "python",
-  "status": "created"
-}
-```
+## 3. Run your first sandbox
 
-## 3. Upload your project
+```python
+from jhansi import Sandbox
 
-Zip your project from inside the folder:
-
-```bash
-cd my_project && zip -r ../my_project.zip .
-```
-
-Upload it:
-
-```bash
-curl -X POST http://localhost:8000/v1/sandboxes/sb_abc123/upload \
-  -F "file=@my_project.zip"
-```
-
-## 4. Execute it
-
-```bash
-curl -X POST http://localhost:8000/v1/sandboxes/sb_abc123/exec \
-  -H "Content-Type: application/json" \
-  -d '{"command": "python app.py"}'
-```
-
-```json
-{
-  "output": "hello from jhansi.io\n"
-}
-```
-
-## 5. Run with test mode
-
-```bash
-curl -X POST http://localhost:8000/v1/sandboxes/sb_abc123/exec \
-  -H "Content-Type: application/json" \
-  -d '{"command": "python app.py", "test": true}'
-```
-
-```json
-{
-  "output": "tests/test_app.py::test_health PASSED\n1 passed in 0.11s\n"
-}
+with Sandbox(language="python") as sb:
+    sb.upload_file("main.py")
+    result = sb.exec("python main.py")
+    print(result["output"])
 ```
 
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="API Reference" icon="code" href="/api-reference/create-sandbox">
-    Explore the full API.
+  <Card title="SDK" icon="puzzle" href="/sdk/installation">
+    Explore the full SDK.
   </Card>
   <Card title="Self Hosting" icon="server" href="/self-hosting/requirements">
     Deploy Petri in production.

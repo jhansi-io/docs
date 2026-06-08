@@ -1,0 +1,28 @@
+---
+title: Context Manager
+description: Automatically create and delete sandboxes using Python's with statement.
+---
+
+The context manager is the recommended way to use the SDK. It automatically creates the sandbox on entry and deletes it on exit — even if an error occurs.
+
+```python
+from jhansi import Sandbox
+
+with Sandbox(language="python") as sb:
+    sb.upload_file("main.py")
+    result = sb.exec("python main.py")
+    print(result["output"])
+```
+
+This is equivalent to:
+
+```python
+sb = Sandbox(language="python")
+sb.create()
+try:
+    sb.upload_file("main.py")
+    result = sb.exec("python main.py")
+    print(result["output"])
+finally:
+    sb.delete()
+```

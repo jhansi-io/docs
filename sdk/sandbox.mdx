@@ -1,0 +1,58 @@
+---
+title: Sandbox
+description: Create and manage sandboxes using the Python SDK.
+---
+
+## Create
+
+```python
+from jhansi import Sandbox
+
+sb = Sandbox(language="python")
+sb.create()
+```
+
+## Upload a file
+
+```python
+sb.upload_file("main.py")
+```
+
+## Upload a project
+
+Zip your project first, then upload:
+
+```bash
+cd my_project && zip -r ../my_project.zip .
+```
+
+```python
+sb.upload_zip("my_project.zip")
+```
+
+## Execute
+
+```python
+result = sb.exec("python main.py")
+print(result["output"])
+```
+
+## Test mode
+
+```python
+result = sb.exec("python main.py", test=True)
+print(result["output"])
+```
+
+## Status
+
+```python
+status = sb.status()
+print(status["status"])
+```
+
+## Delete
+
+```python
+sb.delete()
+```
