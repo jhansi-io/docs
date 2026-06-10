@@ -11,7 +11,7 @@ from jhansi import Sandbox
 with Sandbox(language="python") as sb:
     sb.upload_file("main.py")
     result = sb.exec("python main.py")
-    print(result["output"])
+    print(result)
 ```
 
 This is equivalent to:
@@ -22,7 +22,7 @@ sb.create()
 try:
     sb.upload_file("main.py")
     result = sb.exec("python main.py")
-    print(result["output"])
+    print(result)
 finally:
     sb.delete()
 ```

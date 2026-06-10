@@ -1,0 +1,34 @@
+---
+title: MCP Server
+description: Connect AI coding agents to jhansi.io sandboxes via the Model Context Protocol.
+---
+
+The jhansi SDK includes a built-in MCP server, letting AI agents (Claude Code, Cursor, Windsurf) create and run sandboxes directly.
+
+## Start the server
+
+```bash
+python -m jhansi.mcp_server
+```
+
+Configure the endpoint via environment variable:
+
+```bash
+export JHANSI_BASE_URL=http://localhost:8000
+```
+
+## Claude Code
+
+```bash
+claude mcp add jhansi --scope user \
+  --env JHANSI_BASE_URL=http://localhost:8000 \
+  -- python -m jhansi.mcp_server
+```
+
+## Tools
+
+| Tool | Description |
+|------|-------------|
+| `create_sandbox` | Create a new isolated sandbox. Returns the sandbox ID. |
+| `exec_code` | Execute a command in a sandbox. Returns the output. |
+| `delete_sandbox` | Delete a sandbox and free its resources. |

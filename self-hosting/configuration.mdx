@@ -8,6 +8,9 @@ description: Configure Petri for self-hosting.
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `PETRI_WORKSPACE_ROOT` | `~/.petri/workspaces` | Root folder for all sandbox workspaces. |
+| `PETRI_SANDBOX_TTL_SECONDS` | `3600` | Seconds of inactivity before a sandbox is auto-deleted. |
+
+The SQLite registry is stored at `$PETRI_WORKSPACE_ROOT/registry.db` alongside sandbox workspaces.
 
 ## Docker Compose (recommended)
 
