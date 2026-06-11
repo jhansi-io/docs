@@ -1,14 +1,12 @@
 ---
 title: How jhansi.io Works
-description: The agent requests work. jhansi.io owns the execution lifecycle.
+description: The agent requests work. jhansi.io owns the execution lifecycle. The sandbox returns a result.
 ---
-
-The agent requests work. jhansi.io owns the execution lifecycle. The sandbox returns a result.
 
 ## The sequence
 
 1. **Agent** — requests an operation through the SDK or MCP.
-2. **Runtime** — validates the request and creates an execution environment.
+2. **Runtime** — accepts the request and creates an execution environment.
 3. **Sandbox** — runs the code or command in isolation.
 4. **Result** — returns output, errors and execution status.
 5. **Cleanup** — destroys the sandbox when the work is complete.
