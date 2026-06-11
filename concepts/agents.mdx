@@ -1,0 +1,26 @@
+---
+title: Agents
+description: An agent is the requester of work, not the owner of the execution environment.
+---
+
+An agent is the requester of work, not the owner of the execution environment.
+
+The agent may be an AI coding assistant, an automated workflow, a custom application using an LLM, or an MCP-compatible client. It decides that a task should run and supplies the necessary input.
+
+## What the agent sends
+
+- The requested operation.
+- Code, commands or input data.
+- Execution options exposed by jhansi.io.
+
+## What the agent receives
+
+- Execution status.
+- Standard output and error.
+- Structured results or explicitly returned files.
+
+## What the agent should not own
+
+The agent should not need direct access to the host, runtime internals or a general credential store.
+
+jhansi.io exists to preserve that separation.

@@ -1,0 +1,32 @@
+---
+title: System Architecture
+description: jhansi.io separates agent interaction, runtime control and workload execution.
+---
+
+jhansi.io separates agent interaction, runtime control and workload execution.
+
+## Layers
+
+**Agent or application** — chooses the task and sends an execution request.
+
+↓ SDK / MCP
+
+**jhansi.io Runtime** — owns provisioning, execution, results and cleanup.
+
+↓ controlled runtime interface
+
+**Sandbox** — runs the workload inside the configured isolation boundary.
+
+↓ authorised network or credential path
+
+**External systems** — APIs, databases, repositories and internal services.
+
+## Two boundaries
+
+**Control boundary** — the agent can request supported actions, but it does not provision infrastructure directly.
+
+**Execution boundary** — the workload runs inside a sandbox rather than inside the agent client or developer host.
+
+## Future credential boundary
+
+jhansi.io's long-term direction adds a third boundary: access to external systems should be mapped by the runtime without placing reusable secrets in the agent conversation.

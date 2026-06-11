@@ -1,0 +1,24 @@
+---
+title: The jhansi.io Runtime
+description: The runtime owns the lifecycle between an execution request and its result.
+---
+
+The jhansi.io runtime owns the lifecycle between an execution request and its result.
+
+## Responsibilities
+
+- Accept requests from the SDK or MCP layer.
+- Create an appropriate sandbox.
+- Run the requested workload.
+- Collect output and execution state.
+- Terminate and remove the environment.
+
+## Control plane, not model context
+
+The runtime is where operational decisions belong: resource limits, timeouts, available images, network rules and eventually policy and credential controls.
+
+These decisions should not live in the agent's reasoning loop or model context.
+
+## Implementation
+
+The runtime is implemented as [Petri](https://github.com/jhansi-io/petri), an open source FastAPI service. Users interact with it through the jhansi.io SDK or MCP server — the internal name is an implementation detail.

@@ -1,0 +1,28 @@
+---
+title: Current Limitations
+description: A trustworthy security page states what the product does not yet guarantee.
+---
+
+A trustworthy security page states what the product does not yet guarantee.
+
+## Before production use, document
+
+- The exact sandbox backend and isolation boundary.
+- Whether workloads run as root or a non-root user.
+- Default filesystem mounts and persistence.
+- Default network access and egress controls.
+- Authentication and authorisation on the runtime API.
+- Resource limits, timeouts and cleanup guarantees.
+- How secrets are passed, stored and removed.
+- Logging behaviour and potential sensitive-data exposure.
+
+## Claims intentionally avoided
+
+- "Agents cannot read secrets" — without a mechanism that enforces it.
+- "Production secure" — without a defined deployment profile.
+- "Enterprise ready" — based only on planned governance.
+- "Zero trust" — as a marketing label without precise controls.
+
+## What this means in practice
+
+jhansi.io is suitable for development, evaluation and controlled internal use. Teams with strict production security requirements should review the self-hosting configuration, validate the deployment against their threat model, and monitor this page as the product matures.

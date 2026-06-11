@@ -1,0 +1,19 @@
+---
+title: Sandboxes
+description: A sandbox is a temporary environment created to perform requested work.
+---
+
+A sandbox is a temporary environment created to perform requested work. It gives generated code a defined place to run instead of inheriting the full developer or server environment.
+
+## Typical properties
+
+- Created for a specific task or session.
+- Separated from unrelated workloads.
+- Given only the files, network access and resources required for its purpose.
+- Destroyed when no longer needed.
+
+## Isolation is not absolute by default
+
+The strength of a sandbox depends on its backend and deployment configuration. Containers, microVMs and virtual machines provide different boundaries.
+
+jhansi.io currently uses Docker containers as the sandbox backend. The protections provided reflect standard Docker isolation — not microVM or hardware virtualisation boundaries.

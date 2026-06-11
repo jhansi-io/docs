@@ -1,0 +1,21 @@
+---
+title: Execution Flow
+description: A complete request crosses the agent interface, runtime and sandbox before returning a result.
+---
+
+A complete request crosses the agent interface, runtime and sandbox before returning a result.
+
+## The sequence
+
+1. **Tool discovery or SDK setup** — the caller learns which operations jhansi.io exposes.
+2. **Request submission** — the caller provides code, command or task input.
+3. **Validation** — the runtime checks the request and supported options.
+4. **Provisioning** — jhansi.io creates a sandbox from an approved runtime definition.
+5. **Execution** — the workload runs with configured limits and access.
+6. **Collection** — jhansi.io records exit state, output and returned artefacts.
+7. **Response** — the caller receives a structured result.
+8. **Cleanup** — the runtime destroys the environment and temporary resources.
+
+## Why the flow matters
+
+Each stage becomes a future enforcement point for timeouts, quotas, policy, audit events and credential decisions. The architecture should preserve these stages even when the first implementation is simple.

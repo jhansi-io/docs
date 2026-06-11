@@ -1,0 +1,30 @@
+---
+title: The Agent Execution Problem
+description: Generated code becomes an infrastructure problem the moment an agent is allowed to run it.
+---
+
+Generated code becomes an infrastructure problem the moment an agent is allowed to run it.
+
+An agent may need to inspect a repository, transform a file, query a service, run tests or call an internal API. Each task requires execution somewhere, with some level of access to data, networks and credentials.
+
+## The unsafe shortcut
+
+The easiest implementation is to let the agent invoke a local shell. That removes infrastructure work, but it also collapses the boundary between generated code and the user's machine.
+
+## The externalised shortcut
+
+A hosted sandbox moves execution away from the developer machine and can provide a mature isolated environment. But some teams cannot send their code or data to a third-party execution plane, or they need the sandbox to reach private systems from inside their own network.
+
+## The jhansi.io approach
+
+Keep the reasoning interface separate from the credential-bearing execution environment.
+
+The agent sends an execution request. jhansi.io runs the work inside a sandbox in infrastructure chosen by the operator. The result comes back to the agent; the execution environment remains an operational concern.
+
+## What jhansi.io optimises for
+
+- Self-operated deployment.
+- A small, understandable execution layer.
+- SDK and MCP access.
+- Explicit sandbox lifecycle.
+- A future path to credential and governance controls.

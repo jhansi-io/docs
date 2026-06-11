@@ -1,0 +1,24 @@
+---
+title: Why Not Local Execution?
+description: A local shell gives the shortest path from agent decision to action — and the weakest separation from the developer environment.
+---
+
+A local shell gives the shortest path from agent decision to action — and the weakest separation from the developer environment.
+
+## What local execution can expose
+
+**Files** — source code, documents, SSH configuration and other data available to the current user.
+
+**Environment variables** — API keys, tokens and connection strings inherited by the process.
+
+**Local services** — databases, development servers and tools bound to local interfaces.
+
+**Developer identity** — git, cloud and package-manager credentials already configured on the machine.
+
+## Approval prompts are not an execution boundary
+
+Human confirmation can reduce accidental actions, but it does not change where the code runs. Once approved, the process still executes with the privileges of the current user inside the current environment.
+
+## The alternative
+
+jhansi.io gives the agent a lifecycle-managed sandbox. The agent receives a tool for requesting execution rather than a general-purpose path into the developer environment.

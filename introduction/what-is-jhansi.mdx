@@ -1,0 +1,35 @@
+---
+title: What is jhansi.io?
+description: A self-hosted execution layer for AI agents.
+---
+
+jhansi.io is a self-hosted execution layer for AI agents.
+
+AI agents can write code, invoke tools and decide what work should happen next. But an agent still needs somewhere to perform that work. Giving it a shell on a developer laptop gives generated code proximity to files, environment variables, local services and credentials.
+
+jhansi.io sits between the agent and the environment in which code runs. The agent asks jhansi.io to create a sandbox, execute work and return the result. jhansi.io manages that lifecycle inside infrastructure you control.
+
+## The execution question
+
+When an agent generates code or requests a command, there are three broad places it can run:
+
+| Option | Where | Trade-off |
+|--------|-------|-----------|
+| 1 | The user's machine | Fast to start, but the execution boundary is the developer environment itself. |
+| 2 | A vendor-hosted environment | Convenient isolation, with execution operated outside your infrastructure. |
+| 3 | Your controlled environment | The organisation owns where execution runs and how it reaches internal systems. |
+
+jhansi.io provides option 3.
+
+## The core idea
+
+AI agents need execution, not credentials.
+
+The agent should request an outcome. The execution environment — not the model context — should hold the access needed to produce it.
+
+## What jhansi.io provides
+
+- A runtime for creating and destroying isolated execution environments.
+- Interfaces for agents and applications through an SDK or MCP server.
+- A place to enforce execution boundaries before code reaches your systems.
+- A foundation for future policy, audit and credential controls.

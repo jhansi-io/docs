@@ -1,0 +1,23 @@
+---
+title: Why Not Plain Docker?
+description: Docker is an important building block. jhansi.io addresses the product and lifecycle around agent execution.
+---
+
+Docker is an important building block. jhansi.io addresses the product and lifecycle around agent execution.
+
+A container can package a workload and provide process, filesystem and network isolation. But an agent-facing execution service needs more than a command that starts a container.
+
+## What plain Docker leaves to you
+
+| Concern | Plain Docker | jhansi.io |
+|---------|-------------|-----------|
+| Agent interface | You design the API or tool contract. | SDK and MCP-facing execution operations. |
+| Lifecycle | You create, monitor and remove containers. | Sandbox creation, execution, result collection and cleanup. |
+| Result model | You capture stdout, stderr and exit state. | A consistent execution result returned to the caller. |
+| Boundaries | You choose mounts, networks and daemon access. | A defined execution boundary with documented defaults. |
+
+## The question Docker does not answer
+
+How does an AI agent request, observe and finish controlled execution without becoming the infrastructure operator?
+
+jhansi.io answers that question.

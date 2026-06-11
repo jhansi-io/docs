@@ -1,0 +1,29 @@
+---
+title: jhansi.io vs E2B
+description: Both provide sandboxes for agent-generated code. They differ in operating model and intended scope.
+---
+
+Both provide sandboxes for agent-generated code. They differ primarily in operating model and intended scope.
+
+This is a positioning guide, not a security benchmark. Capabilities change — validate both products against current documentation before making an architectural decision.
+
+## Comparison
+
+| Dimension | jhansi.io | E2B |
+|-----------|-----------|-----|
+| Primary posture | A small, self-operated execution layer. | A mature sandbox platform and cloud service. |
+| Default experience | Run and operate the runtime in your environment. | Use hosted sandboxes through an API key and SDK. |
+| Customer infrastructure | Self-hosting is central to the product direction. | Offers bring-your-own-cloud options. |
+| Maturity | Early stage, actively developed. | Production-ready with a broad customer base. |
+
+## When jhansi.io is the better fit
+
+- The runtime must run inside your own infrastructure.
+- You need execution close to private systems or internal networks.
+- You want to inspect and control the execution layer itself.
+
+## When E2B may be the better fit
+
+- You want a managed service with no infrastructure to operate.
+- You need a production-ready platform today.
+- Your data and compliance requirements permit a third-party execution plane.

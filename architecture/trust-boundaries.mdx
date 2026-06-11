@@ -1,0 +1,32 @@
+---
+title: Trust Boundaries
+description: The architecture should make it obvious which component can see which data and perform which action.
+---
+
+The architecture should make it obvious which component can see which data and perform which action.
+
+## What the agent can see
+
+- Tool and SDK operations.
+- Sandbox identifiers.
+- Execution results.
+- Files deliberately returned from the task.
+
+## What the agent should not see
+
+- The host filesystem.
+- Runtime administrative interfaces.
+- Unrelated sandboxes.
+- Credential store contents.
+
+## The runtime is trusted infrastructure
+
+jhansi.io itself is part of the trusted computing base. A compromised or misconfigured runtime may undermine sandbox boundaries, expose host resources or mishandle credentials. Protecting the runtime API and deployment environment is therefore essential.
+
+## The sandbox runs untrusted work
+
+Agent-generated code should be treated as untrusted input. The sandbox boundary exists to limit what that code can reach — not to validate that the code is correct or safe.
+
+## Language matters
+
+Documentation should distinguish between what the architecture intends and what the current implementation enforces. Words such as "cannot" should only be used when the implementation and deployment enforce the claim.

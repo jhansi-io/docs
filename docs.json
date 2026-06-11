@@ -32,11 +32,58 @@
         }
       ]
     },
-    "groups": [
+"groups": [
   {
-    "group": "Getting Started",
+    "group": "Introduction",
+    "icon": "book-open",
+    "pages": [
+      "introduction/what-is-jhansi",
+      "introduction/how-it-works",
+      "introduction/who-it-is-for"
+    ]
+  },
+  {
+    "group": "Why jhansi.io?",
+    "icon": "circle-question",
+    "pages": [
+      "why-jhansi/execution-problem",
+      "why-jhansi/local-execution",
+      "why-jhansi/plain-docker",
+      "why-jhansi/vs-e2b",
+      "why-jhansi/vs-daytona"
+    ]
+  },
+  {
+    "group": "Concepts",
+    "icon": "lightbulb",
+    "pages": [
+      "concepts/agents",
+      "concepts/sandboxes",
+      "concepts/runtime",
+      "concepts/execution-requests",
+      "concepts/lifecycle"
+    ]
+  },
+  {
+    "group": "Architecture",
+    "icon": "diagram-project",
+    "pages": [
+      "architecture/overview",
+      "architecture/trust-boundaries",
+      "architecture/execution-flow"
+    ]
+  },
+  {
+    "group": "Security",
+    "icon": "shield",
+    "pages": [
+      "security/overview",
+      "security/limitations"
+    ]
+  },
+  {
+    "group": "Quick Start",
     "icon": "rocket",
-    "expanded": true,
     "pages": [
       "getting-started/introduction",
       "getting-started/quickstart"
@@ -45,7 +92,6 @@
   {
     "group": "SDK",
     "icon": "puzzle",
-    "expanded": true,
     "pages": [
       "sdk/installation",
       "sdk/sandbox",
@@ -57,7 +103,6 @@
   {
     "group": "Sandboxes",
     "icon": "box",
-    "expanded": true,
     "pages": [
       "sandboxes/languages",
       "sandboxes/dependencies",
@@ -65,9 +110,16 @@
     ]
   },
   {
-    "group": "For Developers",
+    "group": "Self-Hosting",
+    "icon": "server",
+    "pages": [
+      "self-hosting/requirements",
+      "self-hosting/configuration"
+    ]
+  },
+  {
+    "group": "API Reference",
     "icon": "code",
-    "expanded": true,
     "pages": [
       "api-reference/create-sandbox",
       "api-reference/upload-files",
@@ -78,16 +130,13 @@
     ]
   },
   {
-    "group": "Self Hosting",
-    "icon": "server",
-    "expanded": true,
+    "group": "Roadmap",
+    "icon": "map",
     "pages": [
-      "self-hosting/requirements",
-      "self-hosting/configuration"
+      "roadmap/index"
     ]
   }
-]
-  },
+]  },
   "navbar": {
     "links": [],
     "primary": {

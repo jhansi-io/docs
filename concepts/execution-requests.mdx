@@ -1,0 +1,23 @@
+---
+title: Execution Requests
+description: An execution request is the contract between the caller and the jhansi.io runtime.
+---
+
+An execution request is the contract between the caller and the jhansi.io runtime. It describes the work to perform without requiring the caller to manage the underlying environment.
+
+## A request may contain
+
+- Code or a command.
+- Arguments and non-secret input.
+- Runtime or image selection, when supported.
+- Timeout and resource options, when supported.
+
+## A request should not contain
+
+- Raw long-lived credentials copied into the model conversation.
+- Unrestricted host paths.
+- Implicit assumptions about the runtime implementation.
+
+## Design principle
+
+Keep the request portable enough that jhansi.io can change how the sandbox is created without changing what the agent asks for.

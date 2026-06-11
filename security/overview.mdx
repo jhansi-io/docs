@@ -1,0 +1,32 @@
+---
+title: Security Model
+description: jhansi.io reduces direct agent access by placing execution behind a runtime-managed sandbox boundary.
+---
+
+jhansi.io reduces direct agent access by placing execution behind a runtime-managed sandbox boundary.
+
+## Assets to protect
+
+- The host and runtime environment.
+- Credentials and identity material.
+- Private source code and data.
+- External systems reachable from the sandbox.
+- Other sandboxes and tenants.
+
+## Primary threat
+
+Agent-generated code is untrusted and may be incorrect, overly broad or deliberately manipulated by external input. The runtime must assume that a workload may attempt to inspect its environment, consume excessive resources or reach unintended destinations.
+
+## Security objectives
+
+- Keep the workload away from the developer host.
+- Limit the workload to its assigned execution environment.
+- Expose only the resources needed for the task.
+- Destroy temporary environments reliably.
+- Record enough execution state to investigate failures and abuse.
+
+## Current state
+
+jhansi.io currently uses Docker containers as the isolation backend. This provides process, filesystem and network separation at the container level. It does not provide microVM or hardware virtualisation boundaries.
+
+A production security claim requires implementation details, hardening guidance and independent testing.

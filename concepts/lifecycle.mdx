@@ -1,0 +1,23 @@
+---
+title: Sandbox Lifecycle
+description: A sandbox should exist only for as long as its work requires.
+---
+
+A sandbox should exist only for as long as its work requires.
+
+## The sequence
+
+1. **Request** — the caller asks jhansi.io to perform work.
+2. **Create** — the runtime provisions an environment.
+3. **Prepare** — required code, files and configuration are made available.
+4. **Execute** — the sandbox runs the workload.
+5. **Collect** — output, errors and status are returned.
+6. **Destroy** — the environment is terminated and cleaned up.
+
+## Failure is part of the lifecycle
+
+Timeouts, startup failures and cancelled requests must still lead to cleanup. A reliable runtime treats destruction as a first-class operation rather than an optional final step.
+
+## TTL-based cleanup
+
+jhansi.io automatically destroys sandboxes after a period of inactivity. The default TTL is 3600 seconds and is configurable via `PETRI_SANDBOX_TTL_SECONDS`.
