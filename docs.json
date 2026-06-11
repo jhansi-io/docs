@@ -44,7 +44,7 @@
   },
   {
     "group": "Why jhansi.io?",
-    "icon": "shield-question",
+    "icon": "help-circle",
     "pages": [
       "why-jhansi/execution-problem",
       "why-jhansi/local-execution",
